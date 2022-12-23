@@ -13,33 +13,29 @@ class Categoria(models.Model):
         return self.nombre
 
 class Noticia(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     texto = models.TextField()
-    imagen = models.ImageField(null=True, blank=True, upload_to='app/img',help_text="Seleccione una imagen para mostrar")
+    imagen = models.ImageField(null=True, blank=True, upload_to='app/img/',help_text="Seleccione una imagen para mostrar")
     creado = models.DateTimeField(default=timezone.now)
     modificado = models.DateTimeField(auto_now=True)
     publicado = models.DateTimeField(blank=True, null=True)
-    categorias = models.ManyToManyField('Categoria', related_name='noticias')
+    categorias = models.ManyToManyField('Categoria', related_name='Noticia')
 
     def publicarNoticia(self):
         self.publicado = datetime.now()
         self.save()
 
-    def comentariosAprobados(self):
-        return self.comentarios.filter(aprobado=True)
+    def __str__(self):
+        return self.titulo + ' | Hecho Por ' + str(self.autor)
 
 
 class Comentarios(models.Model):
-    noticia = models.ForeignKey('Noticia',related_name='comentarios', on_delete=models.CASCADE)
-    autor =  models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    noticia = models.ForeignKey('Noticia',related_name='Comentarios', on_delete=models.CASCADE)
+    autor =  models.ForeignKey(User, on_delete=models.CASCADE)
     comentario = models.TextField()
     creado = models.DateTimeField(default=timezone.now)
-    aprobado = models.BooleanField(default=False)
 
-    def aprobarComentario(self):
-        self.aprobado = True
-        self.save()
 
 
 #Para usuario

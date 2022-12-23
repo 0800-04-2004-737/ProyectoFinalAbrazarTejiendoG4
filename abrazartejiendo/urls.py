@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from app.views import HomeView, ArticleDetailView, About, News, LoginView, Contact, Commentary,HomeView1, UpdatePost, login, singout, singin
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('menu/', include('app.urls')),
@@ -43,4 +46,4 @@ urlpatterns = [
     # path('miembros/', include('django.contrib.auth.urls')),
     # path('miembros/', include('miembros.urls')),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

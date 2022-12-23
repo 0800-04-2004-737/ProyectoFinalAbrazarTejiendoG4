@@ -1,36 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contenido %}
-    <main class="contenedor seccion">
 
-        <h2 class="display-2">Noticias</h2>
-        
-        <!-- crear bucle para publicaciones -->
-        <div class="contenedor-anuncios">
-            <div>
-                <picture>
-                    <img src="{% static 'img/foto1.jpg' %}" alt="">
-                </picture>
-                <section>
-                    <p class="display-5">
-                        Traemos nueva tela para la ropa de los bebes
-                    </p>
-                    <figcaption class="blockquote-footer">
-                        <cite class="lead" title="Source Title">Publicado por Matias</cite>
-                    </figcaption>
-                    <a href="{% url 'post' %}" type="button" class="btn btn-primary">
-                        <h1>
-                            Comentarios
-                        </h1>
-                    </a>
-                </section>
+{% for noticias in object_list %}
 
-                <div class="contenido-anuncio">
-                    
-                </div><!--.contenido-anuncio-->
-            </div><!--anuncio-->
+<main class="contenedor seccion">
 
-        </div> <!--.contenedor-anuncios-->
-    </main>
+    <h2 class="display-2">Noticias</h2>
+    
+    <!-- crear bucle para publicaciones -->
+    <div class="contenedor-anuncios">
+        <div>
+            <picture>
+                <img src="{{ noticias.imagen.url }}">
+            </picture>
+            <section>
+                <p class="display-5">
+                    {{ noticias.titulo }}
+                </p>
+                <figcaption class="blockquote-footer">
+                    <cite class="lead" title="Source Title">Publicado por {{ noticias.autor }}</cite>
+                </figcaption>
+                <a href="{% url 'post' %}" type="button" class="btn btn-primary">
+                    <h1>
+                        Comentarios
+                    </h1>
+                </a>
+            </section>
 
-    {% endblock %}
+            <div class="contenido-anuncio">
+                
+            </div><!--.contenido-anuncio-->
+        </div><!--anuncio-->
+
+    </div> <!--.contenedor-anuncios-->
+    <!-- Fin de crear bucle para publicaciones -->
+</main>
+
+
+{% endfor %}
+
+
+{% endblock %}
+

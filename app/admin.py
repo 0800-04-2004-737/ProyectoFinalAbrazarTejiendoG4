@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Noticia, Categoria, Comentarios
 
 # Register your models here.
 
@@ -11,3 +11,6 @@ from .models import Post
 # admin.site.register(models.Project, admin.ModelAdmin)
 
 admin.site.register(Post)
+admin.site.register(Noticia)
+admin.site.register(Categoria)
+

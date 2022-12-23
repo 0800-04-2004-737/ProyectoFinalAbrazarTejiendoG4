@@ -13,21 +13,7 @@
 </a>
 {% for post in object_list %}
 
-    <!-- <div class="card text-bg-primary mb-3" style="max-width: 40rem;">
-        <div class="w-100 p-2" style="width: 200px;" class="card-header">
-            <h3 class="fw-bold" class="text-center" class="display-6" class="text-start">{{ post.title }} - Comentario de {{ post.author }}</h3>
-            <hr>
-        </div>
-            <div class="card-body">
-                <p class="display-6" class="text-start" class="h3" class="fw-bold" class="lead"> 
-                    <br>
-                    <br/>
-                {{ post.body }}
-                </p>
-            </div>
-    </div> -->
-
-    <hr>
+<hr>
 
     <br>
 
@@ -44,10 +30,16 @@
                 <h3 class="display-6" class="card-title">
                     <a style="color: rgb(14, 14, 14);" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
                 </h3>
-
-                <!-- BOTON DE ACTUALIZAR -->
                 <br>
-                <a class="btn btn-primary" href="{% url 'actualizar' post.pk %}">Modificar texto</a>
+                <!-- BOTON DE ACTUALIZAR -->
+                {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                        <a class="btn btn-primary" href="{% url 'actualizar' post.pk %}">
+                            Modificar texto
+                        </a>
+                    {% endif %}
+                {% endif %}
+
                 <!-- FIN DE BOTON DE ACTUALIZAR -->
                 
                 <hr>
@@ -58,8 +50,6 @@
             </div>
         </div>
     </div>
-
-    
 
 {% endfor %}
 

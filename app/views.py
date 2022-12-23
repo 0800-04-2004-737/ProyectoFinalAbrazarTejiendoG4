@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .models import Post
+from .models import Post, Noticia
 from .forms import PostForm, PostEdit
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -46,7 +46,7 @@ class About(ListView):
 
 
 class News(ListView):
-    model = Post
+    model = Noticia
     template_name = 'anuncios.html'
 
 
@@ -78,7 +78,7 @@ class UpdatePost(UpdateView):
 #         'form' : UserCreationForm
 #     })
     
-
+#Autenticación
 def login(request):
     
     if request.method == 'GET':
