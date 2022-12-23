@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+<br>
+
+<h1 class="display-2">Comentarios</h1>
+<a href="{% url 'comentarios' %}" type="button" class="btn btn-primary" style="margin-left: 38pc;">
+    <h1>
+        Comentar
+    </h1>
+</a>
+{% for post in object_list %}
+
+    <!-- <div class="card text-bg-primary mb-3" style="max-width: 40rem;">
+        <div class="w-100 p-2" style="width: 200px;" class="card-header">
+            <h3 class="fw-bold" class="text-center" class="display-6" class="text-start">{{ post.title }} - Comentario de {{ post.author }}</h3>
+            <hr>
+        </div>
+            <div class="card-body">
+                <p class="display-6" class="text-start" class="h3" class="fw-bold" class="lead"> 
+                    <br>
+                    <br/>
+                {{ post.body }}
+                </p>
+            </div>
+    </div> -->
+
+    <hr>
+
+    <br>
+
+    <div style="margin-left: 20px;">
+        <div class="card w-75">
+
+            <div class="card-body">
+                <div class="position-absolute top-0 start-0">
+                    <img style="color: black; margin-left: 5px; margin-top: 15px;" src="{% static 'img/profile-user.png' %}">
+                </div>
+                <div style="color: black; margin: 10px -40px -30px 50px;">
+                    <small class="display-6" style="color: black; padding-left: -10px;">{{ post.author }}</small>
+                </div>
+                <h3 class="display-6" class="card-title">
+                    <a style="color: rgb(14, 14, 14);" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
+                </h3>
+
+                <!-- BOTON DE ACTUALIZAR -->
+                <br>
+                <a class="btn btn-primary" href="{% url 'actualizar' post.pk %}">Modificar texto</a>
+                <!-- FIN DE BOTON DE ACTUALIZAR -->
+                
+                <hr>
+              <p style="color: darkslategrey;" class="display-6" class="text-start" class="h3" class="fw-bold" class="lead"> 
+                <br>
+            {{ post.body }}
+            </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+{% endfor %}
+
+{% endblock %}

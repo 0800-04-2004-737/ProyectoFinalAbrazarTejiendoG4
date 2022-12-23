@@ -1,0 +1,11 @@
+
+<h1>registrarse</h1>
+
+<h1 class="display-5">{{ error }}</h1>
+
+<form action="/login/" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button>Sing Up</button>
+</form>
+

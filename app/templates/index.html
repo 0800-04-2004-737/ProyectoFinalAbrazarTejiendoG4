@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .no-webp .imagen-contacto {
+  background-image: url("{% static 'img/niños.jpg' %}")
+}
+
+.webp .imagen-contacto {
+  background-image: url("{% static 'img/niños.jpg' %}")
+}
+
+    </style>
+    
+  </head>
+  <body>
+<header class="header inicio">
+    <div class="contenedor contenido-header">
+        <div class="barra">
+          <a href="{% url 'home' %}" style="text-decoration: none;">
+            <h1 class="display-2" class="blockquote" style="color: #ff80a8;font-family: Arial, Helvetica, sans-serif; text-shadow: 3px 3px 4px black;">Abrazar Tejiendo</h1>
+          </a>
+
+          <div class="mobile-menu">
+            <img
+              src="{% static 'img/barras.svg' %}"
+              alt="icono menu responsive"
+            />
+            
+          </div>
+          <div class="derecha">
+            <img class="dark-mode-boton" src="{% static 'img/dark-mode.svg' %}">
+          </div>
+
+          <div class="derecha">
+            
+            <nav class="navegacion">
+              <a href="{% url 'nosotros' %}">Nosotros</a>
+              <a href="{% url 'noticias' %}">Noticias</a>
+              <a href="{% url 'contacto' %}">Contacto</a>
+              <!-- cuenta -->
+              
+            <div class="p-3 m-0 border-0 bd-example">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Cuenta
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                          
+                          {% if user.is_authenticated %}
+                          
+                          <li>
+                            <a class="dropdown-item" href="/logout">
+                              Cerrar Sessión
+                            </a>
+                          </li>
+
+                          {% else %}
+
+                          <li>
+                            <a class="dropdown-item" href="{% url 'login' %}">
+                              Registrarse
+                            </a>
+                          </li>
+
+                          <li>
+                            <a class="dropdown-item" href="{% url 'singin' %}">
+                              Iniciar Sesión
+                            </a>
+                          </li>
+                          
+                          {% endif %}
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            </nav>
+          </div>
+        </div> <!--.barra-->
+
+        <h1 class="display-1" style="text-shadow: 2px 2px 10px black;">SOMOS UNA ONG. </h1>
+    </div>
+</header>
+
+    <main class="contenedor seccion">
+        <h1>Fotos</h1>
+    </main>
+    
+    <!-- FOTOS -->
+    <section class="seccion contenedor">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'img/foto1.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/foto1.jpg' %}" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/foto1.jpg' %}" class="d-block w-100">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <!-- FIN DE FOTOS -->
+
+    <section class="imagen-contacto">
+        <h2>MAS INFO SOBRE NOSOTROS</h2>
+        <p>Llena el formulario de contacto y un asesor se pondrá en contacto contigo a la brevedad</p>
+        <a href="{% url 'contacto' %}" class="boton-amarillo">Contactános</a>
+    </section>
+    <br>
+    </br>
+
+    <!-- OPINIONES -->
+    <h1 class="display-2">Opiniones</h1>
+    <br>
+    </br>
+    <section class="order-3 p-2" class="d-inline-flex p-2" class="testimoniales" >
+
+      <div style="background-color: #ff80a8;" class="testimonial">
+          <blockquote class="display-4">
+              ¡Es increíble lo que hacen! sus ropitas y su tela son de buena calidad
+          <p>- INFOTMATORIO</p>
+      </div>
+  </section>
+
+  <div class="d-flex flex-nowrap">
+    <div class="order-3 p-2">
+      <section class="order-3 p-2" class="d-inline-flex p-2" class="testimoniales" >
+        <h3></h3>
+  
+        <div style="background-color: #ff538a;" class="testimonial">
+            <blockquote class="display-5">
+              Me emociona verlas. Sigan así los niños y hogares
+              pobres les agradecerán. Mucho cariños a TODAS
+              <h1></h1>
+            <p>- INFOTMATORIO</p>
+        </div>
+      </section>
+    </div>
+    <div class="order-2 p-2">
+      <section class="order-3 p-2" class="d-inline-flex p-2" class="testimoniales" >
+        <h3></h3>
+  
+        <div style="background-color: #fe3e7b;" class="testimonial">
+          <blockquote class="display-5">
+            Gracias Bello Grupo de Abrazartejiendo!😘😘😘😘
+            <p>- INFOTMATORIO</p>
+        </div>
+      </section>
+    </div>
+    <div class="order-1 p-2">
+      <section class="order-3 p-2" class="d-inline-flex p-2" class="testimoniales" >
+        <h3></h3>
+  
+        <div style="background-color: #d6245c;" class="testimonial">
+          <blockquote class="display-5">
+            Son super calientitos y cómodos 💖
+            <p>- INFOTMATORIO</p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <!-- FIN DE OPINIONES --> 
+
+    <footer class="footer seccion">
+        <div class="contenedor contenedor-footer">
+          <nav class="navegacion">
+            <a href="{% url 'nosotros' %}">Nosotros</a>
+            <a href="{% url 'noticias' %}">Anuncios</a>
+            <a href="{% url 'contacto' %}">Contacto</a>
+          </nav>
+        </div>
+  
+        <p class="copyright">Todos los derechos Reservados 2021 &copy;</p>
+      </footer>
+  
+      <script src="{% static 'js\bundle.min.js' %}"></script>
+    </body>
+  </html>

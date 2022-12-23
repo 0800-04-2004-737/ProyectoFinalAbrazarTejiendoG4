@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<br>
+<h1 class="display-4">{{ post.title }} - Comentario de {{ post.author }}</h1>
+<br/>
+<hr>
+<h2 class="display-4">Comentario:</h2>
+<p class="display-6" style="text-align: center;">{{ post.body }}</p>
+<br><br/>
+<h2>
+  <a href="{% url 'post' %}" type="button" class="btn btn-primary">
+    <h1>
+        Volver
+    </h1>
+</a>
+</h2>
+
+
+
+
+  {% endblock %}
